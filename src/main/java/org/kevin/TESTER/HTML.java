@@ -8,7 +8,12 @@ import org.kevin.Utils.DocUtils;
  */
 public class HTML {
     public static void main(String[] args) {
-        Document d = DocUtils.getDocument("https://www.nvshens.com/girl/21501/album/");
-        System.out.println(d.outerHtml());
+
+    }
+
+    public static String getHtml(){
+        Document d = DocUtils.getDocument("https://www.zhihu.com/explore");
+        //System.out.println(d.outerHtml());
+        return d.outerHtml();
     }
 }
