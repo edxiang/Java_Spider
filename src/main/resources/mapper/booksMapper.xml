@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.booksMapper">
+    <resultMap id="BaseResultMap" type="org.kevin.entity.Books">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="author" property="author" jdbcType="VARCHAR" />
+        <result column="publisher" property="publisher" jdbcType="VARCHAR" />
+        <result column="publish_date" property="publishDate" jdbcType="VARCHAR" />
+        <result column="page_number" property="pageNumber" jdbcType="INTEGER" />
+        <result column="price" property="price" jdbcType="DECIMAL" />
+        <result column="isbn" property="isbn" jdbcType="VARCHAR" />
+        <result column="star" property="star" jdbcType="DECIMAL" />
+        <result column="star_man" property="starMan" jdbcType="INTEGER" />
+        <result column="content" property="content" jdbcType="LONGVARCHAR" />
+    </resultMap>
+
+    <select id="find" parameterType="int"
+            resultType="org.kevin.entity.Books">
+        select * from books where id=#{id}
+    </select>
+
+    <select id="count" resultType="int">
+        select count(*) from books where 1=1
+    </select>
+
+    <insert id="insert" parameterType="org.kevin.entity.Books">
+        insert into books
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="name != null">
+                name,
+            </if>
+            <if test="author != null">
+                author,
+            </if>
+            <if test="publisher != null">
+                publisher,
+            </if>
+            <if test="publishDate != null">
+                publish_date,
+            </if>
+            <if test="pageNumber > 0">
+                page_number,
+            </if>
+            <if test="price > 0">
+                price,
+            </if>
+            <if test="isbn != null">
+                isbn,
+            </if>
+            <if test="star > 0">
+                star,
+            </if>
+            <if test="starMan > 0">
+                star_man,
+            </if>
+            <if test="content != null">
+                content,
+            </if>
+        </trim>
+        <trim prefix="values(" suffix=")" suffixOverrides=",">
+            <if test="name != null">
+                #{name, jdbcType=VARCHAR},
+            </if>
+            <if test="author != null">
+                #{author, jdbcType=VARCHAR},
+            </if>
+            <if test="publisher != null">
+                #{publisher, jdbcType=VARCHAR},
+            </if>
+            <if test="publishDate != null">
+                #{publishDate, jdbcType=VARCHAR},
+            </if>
+            <if test="pageNumber > 0">
+                #{pageNumber, jdbcType=INTEGER},
+            </if>
+            <if test="price > 0">
+                #{price, jdbcType=DECIMAL},
+            </if>
+            <if test="isbn != null">
+                #{isbn, jdbcType=VARCHAR},
+            </if>
+            <if test="star > 0">
+                #{star, jdbcType=DECIMAL},
+            </if>
+            <if test="starMan > 0">
+                #{starMan, jdbcType=INTEGER},
+            </if>
+            <if test="content != null">
+                #{content, jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <delete id="delete" parameterType="Long">
+        delete from books where id = ${id}
+    </delete>
+</mapper>

@@ -10,10 +10,12 @@ import java.util.regex.Pattern;
  */
 public class GetLink {
     public static void main(String[] args) {
+        long now = System.currentTimeMillis();
         Pattern p = Pattern.compile("href=\".+?\"");
-        Matcher m = p.matcher(HTML.getHtml());
+        Matcher m = p.matcher(HTML.getHtml("https://book.douban.com/tag/?view=cloud"));
         while(m.find()){
             System.out.println(m.group());
         }
+        System.err.println(System.currentTimeMillis() - now);
     }
 }
