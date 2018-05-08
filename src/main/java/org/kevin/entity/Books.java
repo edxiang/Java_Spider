@@ -10,6 +10,7 @@ public class Books {
     private long id;
     private String name;
     private String author;
+    private String translator;
     private String publisher;
     private String publishDate;
     private int pageNumber;
@@ -18,4 +19,5 @@ public class Books {
     private double star;
     private int starMan;
     private String content;
+    private int commentNumber;
 }
