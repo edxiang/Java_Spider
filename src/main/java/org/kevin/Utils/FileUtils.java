@@ -71,7 +71,7 @@ public class FileUtils {
                 }
             }
         } catch (Exception e) {
-            LogUtils.setError("create file failed");
+            LogUtils.setError("create file failed" + relativePath);
             e.printStackTrace();
         }
         return null;
@@ -107,6 +107,10 @@ public class FileUtils {
 
     public static void downloadPage(String relativePath, String targetUrl, Map<String, String> maps) {
         File targetFile = newFile(relativePath);
+        if(targetFile == null) {
+            LogUtils.setError("the file is null");
+            return;
+        }
         BufferedReader br = null;
         BufferedWriter bw = null;
         try {
