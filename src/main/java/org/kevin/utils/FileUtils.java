@@ -1,11 +1,8 @@
-package org.kevin.Utils;
-
-import org.junit.Test;
+package org.kevin.utils;
 
 import java.io.*;
 import java.net.URL;
 import java.net.URLConnection;
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -18,9 +15,9 @@ public class FileUtils {
     private static String fileConnect = "/";
 
     public static File createFile(String title, String name) {
-        return null;
-        /*try {
-            File file = new File(basePath + fileConnect + albumName + fileConnect + title + fileConnect + name);
+        try {
+            //File file = new File(basePath + fileConnect + albumName + fileConnect + title + fileConnect + name);
+            File file = new File(title);
             if (!file.exists()) {
                 if (!file.getParentFile().exists()) {
                     if (file.getParentFile().mkdirs())
@@ -35,7 +32,31 @@ public class FileUtils {
             LogUtils.setError("create file failed");
             e.printStackTrace();
         }
-        return null;*/
+        return null;
+    }
+
+    public static String readContent(String path){
+        BufferedReader br = null;
+        try {
+            br = new BufferedReader(new InputStreamReader(new FileInputStream(path)));
+            StringBuilder sb = new StringBuilder();
+            String s = "";
+            while((s = br.readLine()) != null){
+                sb.append(s + "\n");
+            }
+            return sb.toString();
+        } catch(Exception e){
+            e.printStackTrace();
+        } finally {
+            if(br != null){
+                try {
+                    br.close();
+                } catch(Exception e){
+                    e.printStackTrace();
+                }
+            }
+        }
+        return null;
     }
 
     public static boolean checkFileExist(String relativePath) {
@@ -146,9 +167,7 @@ public class FileUtils {
     }
 
     public static void downloadSource(String relativePath, String targetUrl) {
-        File targetFile = newFile(relativePath);
-        if (targetFile == null)
-            return;
+        File targetFile = createFile(relativePath,"hello");
         BufferedInputStream bis = null;
         BufferedOutputStream bos = null;
         try {
@@ -161,6 +180,7 @@ public class FileUtils {
             while ((length = bis.read(bs)) != -1) {
                 bos.write(bs, 0, length);
             }
+            System.out.println("finished: " + relativePath);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

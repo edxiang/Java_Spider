@@ -16,6 +16,9 @@ public class View extends JFrame {
     private JTextField websiteField = new JTextField(); // 爬取网址
     private JTextField locationField = new JTextField(); // 本地保存路径
     private JTextArea processArea = new JTextArea(); // 爬取进程展示页面
+    private String url;
+    private String basePath;
+    private static String hw = "hello world! 我是中文";
 
     public View() {
         JFrame frame = new JFrame();
@@ -28,9 +31,9 @@ public class View extends JFrame {
         // 页面相关控件
         JPanel basicInfoPanel = new JPanel(new BorderLayout());
         JPanel processPanel;
-        JLabel websiteLabel = new JLabel("website: ");
+        JLabel websiteLabel = new JLabel(" website: ");
         JButton startCrawlerButton = new JButton(" Crawl  ");
-        JLabel locationLabel = new JLabel("location:");
+        JLabel locationLabel = new JLabel(" location: ");
         JButton chooseLocationButton = new JButton("Choose");
 
         // 信息输入面板
@@ -50,7 +53,10 @@ public class View extends JFrame {
 
         // 主面板
         processPanel = new JPanel(new BorderLayout());
+        processArea.setEnabled(false);
         processPanel.add(processArea, BorderLayout.CENTER);
+        processPanel.setBorder(BorderFactory.createTitledBorder("processing"));
+        basicInfoPanel.setBorder(BorderFactory.createLoweredBevelBorder());
 
         frame.add(basicInfoPanel, BorderLayout.NORTH);
         frame.add(processPanel, BorderLayout.CENTER);
@@ -77,13 +83,17 @@ public class View extends JFrame {
         startCrawlerButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String url = websiteField.getText();
+                url = websiteField.getText();
                 if(url == null || url.trim().equals("")){
                     JOptionPane.showMessageDialog(null, "please input the location of the website.", "Before crawl", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
-                String path = locationField.getText();
-                if (path == null || path.trim().equals("")) {
+                if(!url.contains("http")){
+                    JOptionPane.showMessageDialog(null, "please input correct format of the website.", "Before crawl", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+                basePath = locationField.getText();
+                if (basePath == null || basePath.trim().equals("")) {
                     JOptionPane.showMessageDialog(null, "please choose the location to store the website.", "Before crawl", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
@@ -93,6 +103,10 @@ public class View extends JFrame {
     }
 
     public void crawl(){
-        System.out.println("hello world!");
+        //1. tell caller the resource has downloaded(css, html, js, ...): String returnProcess
+            //2. get the link from HTML
+                //3. get the HTML
+        processArea.append(hw + "\n");
+        processArea.revalidate();
     }
 }

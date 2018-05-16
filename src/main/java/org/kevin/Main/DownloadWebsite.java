@@ -3,8 +3,8 @@ package org.kevin.Main;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import org.kevin.Utils.DocUtils;
-import org.kevin.Utils.FileUtils;
+import org.kevin.utils.DocUtils;
+import org.kevin.utils.FileUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -1,9 +1,6 @@
-package org.kevin.TESTER;
+package org.kevin.tester;
 
-import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
-import org.kevin.MybatisUtils.SQLUtils;
-import org.kevin.entity.Books;
 
 
 /**

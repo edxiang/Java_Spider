@@ -1,6 +1,6 @@
-package org.kevin.Utils;
+package org.kevin.utils;
 
-import org.kevin.TESTER.HTML;
+import org.kevin.tester.HTML;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

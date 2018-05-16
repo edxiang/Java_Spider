@@ -3,9 +3,9 @@ package org.kevin.Main;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import org.kevin.Utils.ApplicationPropertiesUtils;
-import org.kevin.Utils.DocUtils;
-import org.kevin.Utils.RegTag;
+import org.kevin.utils.ApplicationPropertiesUtils;
+import org.kevin.utils.DocUtils;
+import org.kevin.utils.RegTag;
 import org.kevin.entity.Books;
 
 import java.util.concurrent.ExecutorService;

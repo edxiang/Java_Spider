@@ -1,4 +1,4 @@
-package org.kevin.Utils;
+package org.kevin.utils;
 
 import java.io.FileInputStream;
 import java.io.InputStreamReader;

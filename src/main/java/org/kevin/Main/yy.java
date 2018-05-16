@@ -6,10 +6,10 @@ import org.apache.http.impl.client.HttpClients;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import org.kevin.Utils.ApplicationPropertiesUtils;
-import org.kevin.Utils.DocUtils;
-import org.kevin.Utils.FileUtils;
-import org.kevin.Utils.LogUtils;
+import org.kevin.utils.ApplicationPropertiesUtils;
+import org.kevin.utils.DocUtils;
+import org.kevin.utils.FileUtils;
+import org.kevin.utils.LogUtils;
 
 import java.io.File;
 import java.io.FileOutputStream;

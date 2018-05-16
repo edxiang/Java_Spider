@@ -1,4 +1,4 @@
-package org.kevin.MybatisUtils;
+package org.kevin.mybatisUtils;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;

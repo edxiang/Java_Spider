@@ -1,7 +1,6 @@
-package org.kevin.Utils;
+package org.kevin.utils;
 
-import com.sun.org.apache.xerces.internal.impl.xpath.regex.Match;
-
+import java.net.URLEncoder;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -45,5 +44,20 @@ public class RegTag {
         Pattern p = Pattern.compile("[\\D]");
         Matcher m = p.matcher(cnt);
         return m.replaceAll("").trim();
+    }
+    
+    public static String ChangeToUnicode(String s){
+        try {
+            s = URLEncoder.encode(s,"UTF-8");
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+
+        s = s.replaceAll("%3A",":");
+        s = s.replaceAll("%2F","/");
+        s = s.replaceAll("%3F","?");
+        s = s.replaceAll("%3D","=");
+        s = s.replaceAll("%26","&");
+        return s;
     }
 }
