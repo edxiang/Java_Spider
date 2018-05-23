@@ -44,6 +44,19 @@ public class DownloadWebsite {
         FileUtils.downloadPage(name + ".html", url, maps);
     }
 
+    private void getHrefOfLink(Elements links, Map map){
+        for(Element e:links){
+            String href = null;
+            href = e.attr("data-href");
+            if(href == null || href.equals(""))
+                href = e.attr("href");
+
+            if(href.contains(".../"))
+                href = href.replaceAll("\\.\\./","");
+
+        }
+    }
+
     private void getHref(Elements elements, String mark, String tag, Map maps) {
         for (Element e : elements) {
             String href = e.attr(mark);
